@@ -22,9 +22,21 @@ namespace Riego
 
         private void Interfaz_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(arduino.openSerial("COM3"));
-            arduino.cambiarLed(1, true);
-            arduino.cambiarLed(2, true);
+
+        }
+
+        private void btnConectar_Click(object sender, EventArgs e)
+        {
+            var conectar = arduino.openSerial("COM" + numPuerto);
+            if (conectar != "true")
+                MessageBox.Show(conectar);
+            else
+            {
+                arduino.cambiarLed(1, true);
+                arduino.cambiarLed(2, true);
+                arduino.cambiarLed(3, true);
+                arduino.cambiarLed(4, true);
+            }
         }
     }
 }
