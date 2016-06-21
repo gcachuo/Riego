@@ -10,7 +10,7 @@ namespace Riego
     {
         public float[] obtenerClima()
         {
-            return new float[2] { 50, 20 };
+            return new float[2] { 70, 70 };
         }
     }
 }

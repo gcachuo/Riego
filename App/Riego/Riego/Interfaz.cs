@@ -64,14 +64,22 @@ namespace Riego
         private void btnConectar_Click(object sender, EventArgs e)
         {
             var boton = (Button)sender;
-            var conectar = arduino.openSerial("COM" + numPuerto.Value);
-            if (conectar != "true")
+            if (boton.BackColor == Color.Green)
             {
-                error(conectar);
+                arduino.closeSerial();
                 boton.BackColor = Color.Red;
             }
             else
-                boton.BackColor = Color.Green;
+            {
+                var conectar = arduino.openSerial("COM" + numPuerto.Value);
+                if (conectar != "true")
+                {
+                    error(conectar);
+                    boton.BackColor = Color.Red;
+                }
+                else
+                    boton.BackColor = Color.Green;
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -131,7 +139,11 @@ namespace Riego
 
             if (climaDia > 60 || climaNoche > 60)
             {
-
+                MessageBox.Show(
+                "Secuencia de encendido",
+                "CLIMA",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
             }
         }
     }

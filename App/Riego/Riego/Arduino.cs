@@ -23,6 +23,17 @@ namespace Riego
                 return "Puerto no válido \n("+ex.Message+")";
             }
         }
+        public string closeSerial()
+        {
+            try
+            {
+                serial.Close();
+                return "true";
+            }catch(Exception ex)
+            {
+                return ex.Message;
+            }
+        }
         public string cambiarLed(int led, bool estado)
         {
             string letra = "";
@@ -56,7 +67,6 @@ namespace Riego
             try
             {
                 serial.WriteLine(letra);
-                serial.Close();
                 return "true";
             }
             catch(Exception ex)
