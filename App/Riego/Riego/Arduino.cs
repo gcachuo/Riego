@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Riego
 {
     class Arduino
-    {        
+    {
         SerialPort serial;
         public string openSerial(string puerto)
         {
@@ -18,14 +18,14 @@ namespace Riego
                 serial.Open();
                 return "true";
             }
-            catch
+            catch(Exception ex)
             {
-                return "Puerto no válido";
+                return "Puerto no válido \n("+ex.Message+")";
             }
         }
         public string cambiarLed(int led, bool estado)
         {
-            string letra="";   
+            string letra = "";
             switch (led)
             {
                 case 1:
@@ -56,12 +56,12 @@ namespace Riego
             try
             {
                 serial.WriteLine(letra);
+                serial.Close();
                 return "true";
             }
-            catch
-            {
-                serial.Close();
-                return "Error al encender led";
+            catch(Exception ex)
+            {                
+                return "Error al encender led \n("+ex.Message+")";
             }
         }
     }

@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arduino.cs" />
+    <Compile Include="Clima.cs" />
     <Compile Include="Interfaz.cs">
       <SubType>Form</SubType>
     </Compile>
