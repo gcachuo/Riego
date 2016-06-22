@@ -87,7 +87,7 @@
     <None Include="Service References\WeatherService\AppRiego.WeatherService.getRainPobabilityResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\WeatherService\service.wsdl" />
+    <None Include="Service References\WeatherService\service1.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

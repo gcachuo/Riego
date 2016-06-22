@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://192.168.1.225/soap/sustentabilidadWS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://192.168.1.225/soap/sustentabilidadWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://172.17.217.145/soap/sustentabilidadWS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://172.17.217.145/soap/sustentabilidadWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
-    <xsd:schema targetNamespace="http://192.168.1.225/soap/sustentabilidadWS">
+    <xsd:schema targetNamespace="http://172.17.217.145/soap/sustentabilidadWS">
       <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
       <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
     </xsd:schema>
@@ -20,7 +20,7 @@
   <wsdl:binding name="sustentabilidadWSBinding" type="tns:sustentabilidadWSPortType">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
     <wsdl:operation name="getRainPobability">
-      <soap:operation soapAction="http://192.168.1.225/sustentabilidadWS/service.php/getRainPobability" style="rpc" />
+      <soap:operation soapAction="http://172.17.217.145/sustentabilidadWS/service.php/getRainPobability" style="rpc" />
       <wsdl:input>
         <soap:body use="encoded" namespace="http://localhost/sustentabilidadWS/service.php" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
@@ -31,7 +31,7 @@
   </wsdl:binding>
   <wsdl:service name="sustentabilidadWS">
     <wsdl:port name="sustentabilidadWSPort" binding="tns:sustentabilidadWSBinding">
-      <soap:address location="http://192.168.1.225/sustentabilidadWS/service.php" />
+      <soap:address location="http://172.17.217.145/sustentabilidadWS/service.php" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

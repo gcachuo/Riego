@@ -64,10 +64,28 @@ namespace AppRiego
 
                 if (Configuracion.Hora.Hour >= hour && Configuracion.Hora.Minute >= minute)
                 {
-                    if ((Configuracion.Hora.Hour + 1) < hour && (Configuracion.Hora.Minute + Configuracion.Duracion) < minute)
+                    if ((Configuracion.Hora.Hour + 1) > hour && (Configuracion.Hora.Minute + Configuracion.Duracion) > minute)
                     {
-                        listener = false;
-                        IniciarRiego();
+                        double day = 100, night = 100;
+                        try
+                        {
+                            var client = new WeatherService.sustentabilidadWSPortTypeClient();
+                            var response = client.getRainPobability();
+
+                            var probabilities = response.Split(';');
+                            day = double.Parse(probabilities[0]);
+                            night = double.Parse(probabilities[1]);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+
+                        if (day <= 55 || night <= 55)
+                        {
+                            listener = false;
+                            IniciarRiego();
+                        }
                     }
                 }
             }
@@ -87,18 +105,6 @@ namespace AppRiego
             {
                 for (int i = 1; i <= 5; i++)
                 {
-                    var client = new WeatherService.sustentabilidadWSPortTypeClient();
-                    var response = client.getRainPobability();
-
-                    var probabilities = response.Split(';');
-                    var day = double.Parse(probabilities[0]);
-                    var night = double.Parse(probabilities[1]);
-
-                    if (day > 55 || night > 55)
-                    {
-                        break;
-                    }
-
                     switch (i)
                     {
                         case 1:
