@@ -191,7 +191,7 @@ namespace Riego
                 {
                     secuenciaEncendido();
                 }
-                lblValores.Text = (climaDia.ToString() + "; " + climaNoche.ToString());
+                lblValores.Text = (climaDia.ToString() + "%; " + climaNoche.ToString()+"%");
             }
             catch (Exception ex)
             {
