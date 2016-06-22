@@ -38,7 +38,7 @@ namespace AppRiego
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + " :O");
             }
         }
 
@@ -48,10 +48,12 @@ namespace AppRiego
             {
                 Configuracion.Hora = dtpHoraRegado.Value;
                 Configuracion.Duracion = (int) txtDuracion.Value;
+
+                MessageBox.Show("Hora y duración de riego configurados :)");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + " :O");
             }
         }
 
@@ -62,30 +64,31 @@ namespace AppRiego
                 var hour = DateTime.Now.Hour;
                 var minute = DateTime.Now.Minute;
 
-                if (Configuracion.Hora.Hour >= hour && Configuracion.Hora.Minute >= minute)
+                var cHour = Configuracion.Hora.Hour;
+                var cMinute = Configuracion.Hora.Minute;
+
+                if (hour == cHour && minute == cMinute)
                 {
-                    if ((Configuracion.Hora.Hour + 1) > hour && (Configuracion.Hora.Minute + Configuracion.Duracion) > minute)
+
+                    double day = 100, night = 100;
+                    try
                     {
-                        double day = 100, night = 100;
-                        try
-                        {
-                            var client = new WeatherService.sustentabilidadWSPortTypeClient();
-                            var response = client.getRainPobability();
+                        var client = new WeatherService.sustentabilidadWSPortTypeClient();
+                        var response = client.getRainPobability();
 
-                            var probabilities = response.Split(';');
-                            day = double.Parse(probabilities[0]);
-                            night = double.Parse(probabilities[1]);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
+                        var probabilities = response.Split(';');
+                        day = double.Parse(probabilities[0]);
+                        night = double.Parse(probabilities[1]);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message + " :O");
+                    }
 
-                        if (day <= 55 || night <= 55)
-                        {
-                            listener = false;
-                            IniciarRiego();
-                        }
+                    if (day <= 70 || night <= 70)
+                    {
+                        listener = false;
+                        IniciarRiego();
                     }
                 }
             }

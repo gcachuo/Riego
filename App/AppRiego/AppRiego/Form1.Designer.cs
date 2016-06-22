@@ -38,6 +38,7 @@
             this.txtPuerto = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.btnConectar = new System.Windows.Forms.Button();
+            this.lblMensaje = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtDuracion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPuerto)).BeginInit();
             this.SuspendLayout();
@@ -149,12 +150,22 @@
             this.btnConectar.UseVisualStyleBackColor = false;
             this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
             // 
+            // lblMensaje
+            // 
+            this.lblMensaje.AutoSize = true;
+            this.lblMensaje.Location = new System.Drawing.Point(20, 286);
+            this.lblMensaje.Name = "lblMensaje";
+            this.lblMensaje.Size = new System.Drawing.Size(97, 13);
+            this.lblMensaje.TabIndex = 10;
+            this.lblMensaje.Text = "                              ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(264, 398);
+            this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.btnConectar);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPuerto);
@@ -188,6 +199,7 @@
         private System.Windows.Forms.NumericUpDown txtPuerto;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnConectar;
+        private System.Windows.Forms.Label lblMensaje;
     }
 }
 
